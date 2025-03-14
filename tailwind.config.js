@@ -5,28 +5,24 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        // Primary Colors
-        purple: {
-          DEFAULT: '#A729F5',
-          hover: '#B942FF',
-        },
-        // Neutral Colors
-        navy: {
-          DEFAULT: '#313E51',
-          dark: '#3B4D66',
-        },
-        grey: {
-          DEFAULT: '#626C7F',
-          light: '#ABC1E1',
-        },
-        light: {
-          DEFAULT: '#F4F6FA',
-          blue: '#EDF1F9',
-        },
-        white: '#FFFFFF',
+    colors: {
+      purple: '#A729F5', // RGB: 167, 41, 245 - HSL: 277°, 91%, 56%
+      navy: {
+        DEFAULT: '#313E51', // RGB: 49, 62, 81 - HSL: 216°, 25%, 25%
+        dark: '#3B4D66',    // RGB: 59, 77, 102 - HSL: 215°, 27%, 32%
       },
+      grey: {
+        DEFAULT: '#626C7F', // RGB: 98, 108, 127 - HSL: 219°, 13%, 44%
+        light: '#ABC1E1',   // RGB: 171, 193, 225 - HSL: 216°, 47%, 78%
+      },
+      white: {
+        DEFAULT: '#FFFFFF', // RGB: 255, 255, 255 - HSL: 0°, 0%, 100%
+        light: '#F4F6FA',   // RGB: 244, 246, 250 - HSL: 220°, 38%, 97%
+      },
+      green: '#26D782',     // RGB: 38, 215, 130 - HSL: 151°, 70%, 50%
+      red: '#EE5454',       // RGB: 238, 84, 84 - HSL: 0°, 82%, 63%
+    },
+    extend: {
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
       },
