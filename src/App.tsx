@@ -15,12 +15,6 @@ function App() {
             <Icon name="sun-dark" color="#313E51" width="32" height="32" />
             <Icon name="moon-light" color="#626C7F" width="32" height="32" />
             <Icon name="moon-dark" color="#313E51" width="32" height="32" />
-            <Icon name="arrow-right" color="#313E51" width="32" height="32" />
-            <Icon name="arrow-left" color="#313E51" width="32" height="32" />
-            <Icon name="check" color="#26D782" width="32" height="32" />
-            <Icon name="cross" color="#EE5454" width="32" height="32" />
-            <Icon name="info" color="#A729F5" width="32" height="32" />
-            <Icon name="warning" color="#F4694C" width="32" height="32" />
           </div>
         </section>
 
