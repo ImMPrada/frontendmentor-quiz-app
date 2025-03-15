@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Quiz, Question } from "./types";
+import { Quiz, Question, QuestionsContextType } from "./types";
 import QuestionsContext from "./context";
 
 import questionsData from '../../data/data.json';
@@ -15,8 +15,20 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     setQuizzes(questionsData.quizzes);
   }, []);
 
+  const contextVal: QuestionsContextType = {
+    quizzes,
+    currentQuiz,
+    setCurrentQuiz,
+    currentQuestion,
+    setCurrentQuestion,
+    currentAnswer,
+    setCurrentAnswer,
+    isCorrect,
+    setIsCorrect,
+  };
+
   return (
-    <QuestionsContext.Provider value={{ quizzes, currentQuiz, setCurrentQuiz, currentQuestion, setCurrentQuestion, currentAnswer, setCurrentAnswer, isCorrect, setIsCorrect }}>
+    <QuestionsContext.Provider value={contextVal}>
       {children}
     </QuestionsContext.Provider>
   );
