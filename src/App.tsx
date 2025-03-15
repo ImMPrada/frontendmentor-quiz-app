@@ -1,7 +1,29 @@
+import Icon from './components/icon'
+
 function App() {
   return (
     <div className="min-h-screen bg-white-light p-8">
       <div className="max-w-4xl mx-auto space-y-12">
+        {/* Icons Test Section */}
+        <section className="space-y-8">
+          <h2 className="text-heading-m text-navy">Icons</h2>
+          <div className="grid grid-cols-4 gap-4">
+            <Icon name="accessibility" color="#313E51" width="32" height="32" />
+            <Icon name="correct" color="#26D782" width="32" height="32" />
+            <Icon name="incorrect" color="#EE5454" width="32" height="32" />
+            <Icon name="sun-light" color="#626C7F" width="32" height="32" />
+            <Icon name="sun-dark" color="#313E51" width="32" height="32" />
+            <Icon name="moon-light" color="#626C7F" width="32" height="32" />
+            <Icon name="moon-dark" color="#313E51" width="32" height="32" />
+            <Icon name="arrow-right" color="#313E51" width="32" height="32" />
+            <Icon name="arrow-left" color="#313E51" width="32" height="32" />
+            <Icon name="check" color="#26D782" width="32" height="32" />
+            <Icon name="cross" color="#EE5454" width="32" height="32" />
+            <Icon name="info" color="#A729F5" width="32" height="32" />
+            <Icon name="warning" color="#F4694C" width="32" height="32" />
+          </div>
+        </section>
+
         {/* Font Display Section */}
         <section>
           <h1 className="text-[144px] leading-none text-navy font-medium">Rubik</h1>
