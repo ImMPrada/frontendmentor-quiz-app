@@ -60,3 +60,31 @@
     font-family: 'Rubik', sans-serif;
   }
 }
+
+@theme {
+  --color-purple: #A729F5;
+  --color-navy: #313E51;
+  --color-navy-dark: #3B4D66;
+  --color-grey: #626C7F;
+  --color-grey-light: #ABC1E1;
+  --color-white: #FFFFFF;
+  --color-white-light: #F4F6FA;
+  --color-green: #26D782;
+  --color-red: #EE5454;
+
+  --font-sans: 'Rubik', sans-serif;
+
+  --font-size-heading-l: 4rem;
+  --font-size-heading-m: 2.25rem;
+  --font-size-heading-s: 1.25rem;
+  --font-size-body-m: 1.125rem;
+  --font-size-body-s: 0.875rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --line-height-heading-l: 4.5rem;
+  --line-height-heading-m: 2.75rem;
+  --line-height-heading-s: 1.5rem;
+}

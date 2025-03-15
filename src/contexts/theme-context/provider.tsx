@@ -3,11 +3,15 @@ import ThemeContext from "./context";
 import { ThemeProviderProps, ThemeContextType } from "./types";
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<string>('light');
+  const [isDark, setIsDark] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
 
   const contextVal: ThemeContextType = {
-    theme,
-    setTheme,
+    isDark,
+    toggleTheme,
   };
 
   return (

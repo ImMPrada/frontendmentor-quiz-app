@@ -1,6 +1,6 @@
 export interface ThemeContextType {
-  theme: string;
-  setTheme: (theme: string) => void;
+  isDark: boolean;
+  toggleTheme: () => void;
 }
 
 export interface ThemeProviderProps {
