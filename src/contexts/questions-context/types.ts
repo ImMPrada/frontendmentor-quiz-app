@@ -21,4 +21,8 @@ export interface QuestionsContextType {
   isCorrect: boolean;
   setIsCorrect: (isCorrect: boolean) => void;
   isLoading: boolean;
+  progress: number;
+  currentQuestionIndex: number;
+  totalQuestions: number;
+  score: number;
 }
