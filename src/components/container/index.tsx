@@ -3,6 +3,7 @@ import { ThemeContext } from '../../contexts/theme-context'
 import { useContext } from 'react';
 import SelectionMenu from '../selection-menu';
 import { QuestionsContext } from '../../contexts/questions-context';
+import Quiz from '../quiz';
 
 export default function Container() {
   const { isDark } = useContext(ThemeContext);
