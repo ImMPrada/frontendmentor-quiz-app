@@ -6,7 +6,7 @@ import { QuestionsContext } from '../../contexts/questions-context';
 
 export default function Container() {
   const { isDark } = useContext(ThemeContext);
-  const { currentQuiz, isLoading } = useContext(QuestionsContext);
+  const { currentQuiz } = useContext(QuestionsContext);
 
   return (
     <div className={`min-h-screen
@@ -35,8 +35,8 @@ export default function Container() {
         lg:max-w-[1160px]
       ">
         {!currentQuiz && <SelectionMenu />}
-        {/* <Quiz />
-        <Result /> */}
+        {currentQuiz && <Quiz />}
+        {/* <Result /> */}
       </main>
     </div>
   )
