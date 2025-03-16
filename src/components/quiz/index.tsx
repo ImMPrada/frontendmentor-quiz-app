@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { QuestionsContext } from "../../contexts/questions-context";
 import { ThemeContext } from "../../contexts/theme-context";
-
+import invariant from "tiny-invariant";
+import Option from "./option";
 export default function Quiz() {
-  const { currentQuiz } = useContext(QuestionsContext);
+  const { currentQuestion } = useContext(QuestionsContext);
   const { isDark } = useContext(ThemeContext);
+  const literals = ['A', 'B', 'C', 'D', 'E', 'F'];
+  invariant(currentQuestion, 'Current quiz is not found');
 
   return (
     <>
@@ -31,7 +34,7 @@ export default function Quiz() {
           text-heading-m md:text-heading-l
           ${isDark ? 'text-white-light' : 'text-navy-dark'}
         `}>
-          {currentQuiz?.questions}
+          {currentQuestion.question}
         </h2>
       </div>
 
@@ -42,12 +45,12 @@ export default function Quiz() {
         w-full
         gap-3 md:gap-6
       ">
-        {quizzes.map((quiz) => (
+        {currentQuestion.options.map((option, index) => (
           <Option
-            key={quiz.title}
-            title={quiz.title}
-            iconName={quiz.icon}
-            onClick={handleQuizSelection}
+            key={option}
+            literal={literals[index]}
+            content={option}
+            onClick={() => {}}
           />
         ))}
       </div>

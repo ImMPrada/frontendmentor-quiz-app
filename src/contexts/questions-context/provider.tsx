@@ -60,8 +60,8 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     progress,
     currentQuestionIndex,
     totalQuestions,
-
     currentQuestion,
+
     setCurrentQuestion,
     currentAnswer,
     setCurrentAnswer,
