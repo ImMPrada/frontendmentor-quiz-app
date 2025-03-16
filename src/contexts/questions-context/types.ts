@@ -13,11 +13,12 @@ export interface Quiz {
 export interface QuestionsContextType {
   quizzes: Quiz[];
   currentQuiz: Quiz | null;
-  setCurrentQuiz: (quiz: Quiz) => void;
+  handleQuizSelection: (title: string) => void;
   currentQuestion: Question | null;
   setCurrentQuestion: (question: Question) => void;
   currentAnswer: string;
   setCurrentAnswer: (answer: string) => void;
   isCorrect: boolean;
   setIsCorrect: (isCorrect: boolean) => void;
+  isLoading: boolean;
 }
