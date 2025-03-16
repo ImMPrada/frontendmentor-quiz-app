@@ -28,6 +28,8 @@ export default {
         sans: ['Rubik', 'sans-serif'],
       },
       fontSize: {
+        'heading-2xl': ['3.5rem', '4rem'],
+        'heading-xl': ['5.5rem', '6rem'],
         'heading-l': ['4rem', '4.5rem'],
         'heading-m': ['2.25rem', '2.75rem'],
         'heading-s': ['1.25rem', '1.5rem'],
