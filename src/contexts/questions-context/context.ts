@@ -16,6 +16,7 @@ export const QuestionsContext = createContext<QuestionsContextType>({
   currentQuestionIndex: 0,
   totalQuestions: 0,
   score: 0,
+  handleAnswerSelection: () => {},
 });
 
 export default QuestionsContext;

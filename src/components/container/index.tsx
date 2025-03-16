@@ -26,7 +26,7 @@ export default function Container() {
       <main className="flex
         flex-col
         lg:flex-row
-        items-center
+        items-start
         justify-start
         lg:justify-between
         w-full

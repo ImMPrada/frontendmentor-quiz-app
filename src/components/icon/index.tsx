@@ -7,7 +7,7 @@ export default function Icon({ name, className, color, width = '24px', height = 
   invariant(src, `Icon ${name} not found`);
   
   return (
-    <div className="min-w-10 min-h-10 border border-red p-1 rounded-lg">
+    <div className="min-w-10 min-h-10 p-1 rounded-lg">
       <img
         src={iconsNames[name]} 
         alt={`${name} icon`}

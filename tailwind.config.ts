@@ -1,12 +1,19 @@
 import type { Config } from 'tailwindcss'
 
 export default {
+  safelist: [
+    'border-purple',
+    'border-2'
+  ],
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      borderColor: {
+        'purple': '#a855f7', // o el valor de púrpura que necesites
+      },
       colors: {
         'purple': '#A729F5',
         'navy': {

@@ -25,4 +25,5 @@ export interface QuestionsContextType {
   currentQuestionIndex: number;
   totalQuestions: number;
   score: number;
+  handleAnswerSelection: (answer: string) => void;
 }

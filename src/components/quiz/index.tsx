@@ -1,42 +1,29 @@
 import { useContext } from "react";
 import { QuestionsContext } from "../../contexts/questions-context";
-import { ThemeContext } from "../../contexts/theme-context";
 import invariant from "tiny-invariant";
 import Option from "./option";
+import Question from "./question";
+
 export default function Quiz() {
-  const { currentQuestion } = useContext(QuestionsContext);
-  const { isDark } = useContext(ThemeContext);
+  const {
+    currentQuestion,
+    currentQuestionIndex,
+    totalQuestions,
+    progress,
+    handleAnswerSelection,
+    currentAnswer
+  } = useContext(QuestionsContext);
   const literals = ['A', 'B', 'C', 'D', 'E', 'F'];
   invariant(currentQuestion, 'Current quiz is not found');
 
   return (
     <>
-      <div className="flex
-        flex-col
-        items-start
-        justify-start
-        w-full
-        self-start
-        gap-4
-      ">
-        <p className={`
-          font-sans
-          font-light
-          text-body-m md:text-body-l
-          ${isDark ? 'text-white-light' : 'text-navy-dark'}
-        `}>
-          Pick a subject to get started!
-        </p>
-
-        <h2 className={`
-          font-sans
-          font-light
-          text-heading-m md:text-heading-l
-          ${isDark ? 'text-white-light' : 'text-navy-dark'}
-        `}>
-          {currentQuestion.question}
-        </h2>
-      </div>
+      <Question
+        question={currentQuestion.question}
+        number={currentQuestionIndex}
+        total={totalQuestions}
+        progress={progress}
+      />
 
       <div className="flex
         flex-col
@@ -50,7 +37,8 @@ export default function Quiz() {
             key={option}
             literal={literals[index]}
             content={option}
-            onClick={() => {}}
+            isSelected={currentAnswer === option}
+            onClick={() => {handleAnswerSelection(option)}}
           />
         ))}
       </div>

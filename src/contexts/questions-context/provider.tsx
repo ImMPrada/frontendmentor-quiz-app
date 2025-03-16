@@ -16,6 +16,8 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
   const [score, setScore] = useState<number>(0);
   const [totalQuestions, setTotalQuestions] = useState<number>(0);
 
+
+  // Side effects zone:
   useEffect(() => {
     setQuizzes(questionsData.quizzes);
   }, []);
@@ -27,6 +29,13 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     handleQuestionSelection();
   }, [currentQuiz]);
 
+  useEffect(() => {
+    if (totalQuestions === 0) return;
+
+    setProgress(((currentQuestionIndex) * 100/ totalQuestions));
+  }, [currentQuestionIndex, totalQuestions]);
+
+  // Handlers:
   const handleQuizSelection = (title: string) => {
     setIsLoading(true);
     const timer = setTimeout(() => {
@@ -46,11 +55,14 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
 
     const timer = setTimeout(() => {
       setCurrentQuestion(currentQuiz.questions[currentQuestionIndex]);
-      setProgress((currentQuestionIndex / totalQuestions) * 100);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }, 300);
 
     return () => clearTimeout(timer);
+  };
+
+  const handleAnswerSelection = (answer: string) => {
+    setCurrentAnswer(answer);
   };
 
   const contextVal: QuestionsContextType = {
@@ -61,9 +73,10 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     currentQuestionIndex,
     totalQuestions,
     currentQuestion,
+    handleAnswerSelection,
+    currentAnswer,
 
     setCurrentQuestion,
-    currentAnswer,
     setCurrentAnswer,
     isCorrect,
     setIsCorrect,
