@@ -11,7 +11,7 @@ export default function Container() {
   const { currentQuiz, showScore } = useContext(QuestionsContext);
 
   return (
-    <div className={`min-h-screen
+    <main className={`min-h-screen
       min-w-screen
       flex
       flex-col
@@ -24,7 +24,7 @@ export default function Container() {
     `}>
       <Header />
 
-      <main className="flex
+      <div className="flex
         flex-col
         lg:flex-row
         items-start
@@ -39,7 +39,7 @@ export default function Container() {
         {!currentQuiz && <SelectionMenu />}
         {currentQuiz && !showScore && <Quiz />}
         {showScore && <Result />}
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }
