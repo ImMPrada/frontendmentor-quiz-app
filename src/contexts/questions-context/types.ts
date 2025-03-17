@@ -29,7 +29,8 @@ export interface QuestionsContextType {
   answerSubmitted: boolean;
   handleAnswerSubmission: () => void;
   handleQuestionSelection: () => void;
-  canShowScore: boolean;
+  showScore: boolean;
   errors: string[];
   hasMoreQuestions: boolean;
+  restartAll: () => void;
 }

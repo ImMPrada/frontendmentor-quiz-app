@@ -71,6 +71,7 @@ export default function Option({
           font-light
           md:text-weight-medium
           text-heading-s
+          text-left
           ${isDark ? 'text-white-light' : 'text-navy-dark'}
         `}>
           {content}

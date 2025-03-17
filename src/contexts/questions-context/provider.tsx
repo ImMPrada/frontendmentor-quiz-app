@@ -13,12 +13,11 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
   const [answerSubmitted, setAnswerSubmitted] = useState<boolean>(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
-  
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [progress, setProgress] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
   const [totalQuestions, setTotalQuestions] = useState<number>(0);
-  const [canShowScore, setCanShowScore] = useState<boolean>(false);
+  const [showScore, setShowScore] = useState<boolean>(false);
   const [errors, setErrors] = useState<string[]>([]);
   const [hasMoreQuestions, setHasMoreQuestions] = useState<boolean>(true);
 
@@ -39,7 +38,6 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     if (totalQuestions === 0) return;
 
     if (currentQuestionIndex === totalQuestions) {
-      setCanShowScore(true);
       setHasMoreQuestions(false);
     }
 
@@ -52,39 +50,33 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     setScore(score + 1);
   }, [isCorrect]);
 
-  const setQuizToInitialState = () => {
-    setCurrentQuestion(null);
-    setCurrentAnswer(null);
-    setIsCorrect(undefined);
-    setAnswerSubmitted(false); 
-  }
+  useEffect(() => {
+    if (hasMoreQuestions) return;
+    
+    const timer = setTimeout(() => {
+      setShowScore(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [hasMoreQuestions]);
 
   // Handlers:
   const handleQuizSelection = (title: string) => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      const quiz = quizzes.find((quiz) => quiz.title === title);
-      if (quiz) {
-        setCurrentQuiz(quiz);
-        setCurrentQuestion(quiz.questions[0]);
-        setIsLoading(false);
-      }
-    }, 500);
+    const quiz = quizzes.find((quiz) => quiz.title === title);
+    if (!quiz) return;
 
-    return () => clearTimeout(timer);
+    setCurrentQuiz(quiz);
+    setCurrentQuestion(quiz.questions[0]);
   };
 
   const handleQuestionSelection = () => {
     if (!currentQuiz) return;
 
-    const timer = setTimeout(() => {
-      setCurrentQuestion(currentQuiz.questions[currentQuestionIndex]);
-      setIsCorrect(undefined);
-      setAnswerSubmitted(false);
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    }, 300);
-
-    return () => clearTimeout(timer);
+    setCurrentQuestion(currentQuiz.questions[currentQuestionIndex]);
+    setIsCorrect(undefined);
+    setAnswerSubmitted(false);
+    setCurrentAnswer(null);
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
   const handleAnswerSelection = (answer: string) => {
@@ -103,6 +95,19 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     setAnswerSubmitted(true);
   };
 
+  const restartAll = () => {
+    setCurrentQuiz(null);
+    setCurrentQuestion(null);
+    setCurrentAnswer(null);
+    setIsCorrect(undefined);
+    setAnswerSubmitted(false);
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setShowScore(false);
+    setErrors([]);
+    setHasMoreQuestions(true);
+  };
+
   const contextVal: QuestionsContextType = {
     quizzes,
     currentQuiz,
@@ -115,13 +120,13 @@ export default function QuestionsProvider({ children }: { children: React.ReactN
     currentAnswer,
     isCorrect,
     answerSubmitted,
-    isLoading,
     handleAnswerSubmission,
     handleQuestionSelection,
-    canShowScore,
+    showScore,
     score,
     errors,
     hasMoreQuestions,
+    restartAll
   };
 
   return (

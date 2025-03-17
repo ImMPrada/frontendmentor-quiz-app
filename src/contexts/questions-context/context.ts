@@ -20,9 +20,10 @@ export const QuestionsContext = createContext<QuestionsContextType>({
   answerSubmitted: false,
   handleAnswerSubmission: () => {},
   handleQuestionSelection: () => {},
-  canShowScore: false,
+  showScore: false,
   errors: [],
   hasMoreQuestions: false,
+  restartAll: () => {},
 });
 
 export default QuestionsContext;

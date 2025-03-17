@@ -11,7 +11,6 @@ export default function Icon({ name, className, color, width = '24px', height = 
       <img
         src={iconsNames[name]} 
         alt={`${name} icon`}
-        // style={{ filter: `brightness(0) saturate(100%) ${color ? `fill(${color})` : ''}` }}
       />
     </div>
   )

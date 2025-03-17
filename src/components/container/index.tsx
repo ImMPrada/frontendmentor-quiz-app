@@ -4,10 +4,11 @@ import { useContext } from 'react';
 import SelectionMenu from '../selection-menu';
 import { QuestionsContext } from '../../contexts/questions-context';
 import Quiz from '../quiz';
+import Result from '../result';
 
 export default function Container() {
   const { isDark } = useContext(ThemeContext);
-  const { currentQuiz } = useContext(QuestionsContext);
+  const { currentQuiz, showScore } = useContext(QuestionsContext);
 
   return (
     <div className={`min-h-screen
@@ -36,8 +37,8 @@ export default function Container() {
         lg:max-w-[1160px]
       ">
         {!currentQuiz && <SelectionMenu />}
-        {currentQuiz && <Quiz />}
-        {/* <Result /> */}
+        {currentQuiz && !showScore && <Quiz />}
+        {showScore && <Result />}
       </main>
     </div>
   )
