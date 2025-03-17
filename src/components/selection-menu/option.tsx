@@ -17,6 +17,9 @@ export default function Option({ title, iconName, onClick }: OptionProps) {
       p-3 md:p-5
       rounded-lg
       hover:cursor-pointer
+      hover:border-solid
+      hover:border-2
+      hover:border-purple
       ${isDark ? 'bg-navy' : 'bg-white'}
     `}
       onClick={() => onClick(title)}

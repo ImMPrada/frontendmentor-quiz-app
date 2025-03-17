@@ -3,6 +3,9 @@ export interface OptionProps {
   content: string;
   onClick: (content: string) => void;
   isSelected: boolean;
+  isTheAnswer: boolean;
+  isCorrect?: boolean;
+  disabled: boolean;
 }
 
 export interface ProgressBarProps {

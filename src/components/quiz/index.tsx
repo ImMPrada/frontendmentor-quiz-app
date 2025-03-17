@@ -3,7 +3,9 @@ import { QuestionsContext } from "../../contexts/questions-context";
 import invariant from "tiny-invariant";
 import Option from "./option";
 import Question from "./question";
-
+import SubmitButton from "./submit-button";
+import NextQuestionButton from "./next-question-button";
+import Icon from "../icon";
 export default function Quiz() {
   const {
     currentQuestion,
@@ -11,7 +13,11 @@ export default function Quiz() {
     totalQuestions,
     progress,
     handleAnswerSelection,
-    currentAnswer
+    currentAnswer,
+    answerSubmitted,
+    isCorrect,
+    errors,
+    hasMoreQuestions,
   } = useContext(QuestionsContext);
   const literals = ['A', 'B', 'C', 'D', 'E', 'F'];
   invariant(currentQuestion, 'Current quiz is not found');
@@ -38,9 +44,21 @@ export default function Quiz() {
             literal={literals[index]}
             content={option}
             isSelected={currentAnswer === option}
+            isTheAnswer={currentQuestion.answer === option}
+            isCorrect={isCorrect}
             onClick={() => {handleAnswerSelection(option)}}
+            disabled={answerSubmitted}
           />
         ))}
+
+        {!answerSubmitted ? <SubmitButton /> : null}
+        {answerSubmitted && hasMoreQuestions ? <NextQuestionButton /> : null}
+        {errors.length > 0 && (
+          <div className="text-red font-sans text-body-m flex gap-2 items-center">
+            <Icon name="incorrect" />
+            {errors.join(', ')}
+          </div>
+        )}
       </div>
     </>
   );

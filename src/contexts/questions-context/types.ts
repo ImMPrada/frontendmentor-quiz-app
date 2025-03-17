@@ -18,7 +18,7 @@ export interface QuestionsContextType {
   setCurrentQuestion: (question: Question) => void;
   currentAnswer: string;
   setCurrentAnswer: (answer: string) => void;
-  isCorrect: boolean;
+  isCorrect: boolean | undefined;
   setIsCorrect: (isCorrect: boolean) => void;
   isLoading: boolean;
   progress: number;
@@ -26,4 +26,10 @@ export interface QuestionsContextType {
   totalQuestions: number;
   score: number;
   handleAnswerSelection: (answer: string) => void;
+  answerSubmitted: boolean;
+  handleAnswerSubmission: () => void;
+  handleQuestionSelection: () => void;
+  canShowScore: boolean;
+  errors: string[];
+  hasMoreQuestions: boolean;
 }

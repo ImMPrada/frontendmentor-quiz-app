@@ -17,6 +17,12 @@ export const QuestionsContext = createContext<QuestionsContextType>({
   totalQuestions: 0,
   score: 0,
   handleAnswerSelection: () => {},
+  answerSubmitted: false,
+  handleAnswerSubmission: () => {},
+  handleQuestionSelection: () => {},
+  canShowScore: false,
+  errors: [],
+  hasMoreQuestions: false,
 });
 
 export default QuestionsContext;
