@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header className={`flex w-full ${currentQuiz && !showScore ? 'justify-between' : 'justify-end'}`}>
-      {currentQuiz && !showScore && <QuizTitle card={true} />}
+      {currentQuiz && !showScore && <QuizTitle />}
       <ToggleTheme />
     </header>
   );
